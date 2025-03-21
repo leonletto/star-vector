@@ -26,9 +26,16 @@ class StarCoderModel(nn.Module):
             model_config._attn_implementation = "flash_attention_2"
         except ImportError:
             config.use_flash_attn = False
-        
+
         # model = GPTBigCodeForCausalLM(config=model_config)
-        model = AutoModelForCausalLM.from_pretrained(config.starcoder_model_name, config=model_config, **kwargs)
+        model_config = AutoConfig.from_pretrained(config.starcoder_model_name, trust_remote_code=True)
+        if hasattr(model_config, 'use_flash_attn'):
+            model_config.use_flash_attn = False
+        model = AutoModelForCausalLM.from_pretrained(
+            config.starcoder_model_name,
+            config=model_config,
+            **kwargs
+        )
         model.resize_token_embeddings(len(self.tokenizer))
         self.transformer = model
 

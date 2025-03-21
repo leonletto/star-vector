@@ -100,9 +100,12 @@ pip install -e .
 
 # Runtime stuff
 brew install cairo pango gdk-pixbuf libffi
+# add the following to your ~/.bash_profile or ~/.zshrc to make it persistent
 export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"\nexport DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
 pip install py-cpuinfo
 pip install deepspeed
+
+# don't forget to login to huggingface to get access to the models
 
 # run the sample 
 python scripts/quickstart-hf.py
