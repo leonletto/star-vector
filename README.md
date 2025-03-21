@@ -87,6 +87,13 @@ I did not use conda, but you can do it if you want. I used pip to install the de
 This runs ver slow but it runs :) 
 
 ```Shell
+# create a virtual environment
+python3 -m venv venv
+# activate the virtual environment
+source venv/bin/activate
+
+# install dependencies from requirements.txt
+pip install --upgrade pip
 pip install packaging
 pip install torch torchvision
 pip install -e .
@@ -96,7 +103,10 @@ brew install cairo pango gdk-pixbuf libffi
 export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"\nexport DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
 pip install py-cpuinfo
 pip install deepspeed
-pip install --upgrade pip
+
+# run the sample 
+python scripts/quickstart-hf.py
+
 ```
 
 
