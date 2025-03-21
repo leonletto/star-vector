@@ -78,7 +78,29 @@ git clone https://github.com/joanrod/star-vector.git
 cd star-vector
 ```
 
-2. Install Package
+- Install dependencies and Package using pip and brew for Mac M1
+
+I needed to do the following to get this to work on macOS M1. If you are using a different OS, you may not need to do this.
+
+I did not use conda, but you can do it if you want. I used pip to install the dependencies.
+
+This runs ver slow but it runs :) 
+
+```Shell
+pip install packaging
+pip install torch torchvision
+pip install -e .
+
+# Runtime stuff
+brew install cairo pango gdk-pixbuf libffi
+export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"\nexport DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
+pip install py-cpuinfo
+pip install deepspeed
+pip install --upgrade pip
+```
+
+
+2. Install Package using conda
 ```Shell
 conda create -n starvector python=3.11.3 -y
 conda activate starvector
